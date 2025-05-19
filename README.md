@@ -92,21 +92,8 @@ REACT_APP_API_BASE_URL=http://localhost:8080/api
 
 ### 3. Run the Backend
 
-#### 3a. Using Maven Wrapper or Maven CLI
 
-In **PowerShell** or **CMD**:
-
-```bash
-cd Backend
-# with wrapper:
-mvnw.cmd clean spring-boot:run
-# or, if you have Maven installed:
-mvn clean spring-boot:run
-```
-
-By default it starts on **port 8080**.
-
-#### 3b. Using Spring Tool Suite (STS)
+#### Using Spring Tool Suite (STS)
 
 1. **Import as Maven Project**
 
@@ -114,6 +101,9 @@ By default it starts on **port 8080**.
    * Browse to `BITSBids/Backend` and click **Finish**.
 
 2. **Install & Enable Lombok**
+   * Install Lombok and place the jar file in the STS directory.
+	
+	**OR**
 
    * In STS, go to **Help → Eclipse Marketplace…**, search for **Lombok**, and install **Lombok Annotations Support**.
    * After restart, right-click the project → **Properties → Java Compiler → Annotation Processing**, and ensure **"Enable annotation processing"** is checked.
@@ -193,7 +183,7 @@ Visit **[http://localhost:3000](http://localhost:3000)**; API calls proxy to the
 
 ## Contact
 
-For any questions or issues, reach out to **Krish Mantri** at `krish.mantri@example.com`.
+For any questions or issues, reach out to **Krish Mantri** at `krishmantri44@gmail.com`.
 
 ```
 ```
