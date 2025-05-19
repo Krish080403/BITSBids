@@ -1,0 +1,9 @@
+/* ProductsList.css */
+
+.product-tile {
+    transition: background-color 0.3s ease; /* Add smooth transition for the hover effect */
+}
+
+.product-tile:hover {
+    background-color: #FFF9F3; /* Change this to the desired hover color */
+}

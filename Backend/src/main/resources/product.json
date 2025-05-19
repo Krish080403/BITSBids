@@ -1,0 +1,11 @@
+{
+    "basePrice": 100,
+	"highestBid":200,
+    "prodName": "test",
+    "description": "test",
+    "status": "test",
+    "winnerId": "test",
+    "paymentStatus": "test",
+    "bidStartDateTime": "2023-11-26T22:08:59.852713",
+    "bidEndDateTime": "2023-11-27T22:08:59.852713"
+}
