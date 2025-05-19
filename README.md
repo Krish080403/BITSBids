@@ -1,4 +1,3 @@
-````markdown
 # BITSBids
 
 A bidding platform for BITS students built with a Spring Boot backend and React frontend.
@@ -41,7 +40,6 @@ A bidding platform for BITS students built with a Spring Boot backend and React 
    ```bash
    java -version
    # should be “openjdk version "17.x"”  
-````
 
 2. **Maven 3.8+**:
 
