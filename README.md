@@ -12,6 +12,8 @@ A bidding platform for BITS students built with a Spring Boot backend and React 
    - [1. Clone the repo](#1-clone-the-repo)  
    - [2. Configure credentials](#2-configure-credentials)  
    - [3. Run the Backend](#3-run-the-backend)  
+     - [3a. Using Maven Wrapper or Maven CLI](#3a-using-maven-wrapper-or-maven-cli)  
+     - [3b. Using Spring Tool Suite (STS)](#3b-using-spring-tool-suite-sts)  
    - [4. Run the Frontend](#4-run-the-frontend)  
 4. [Packaging & Deployment](#packaging--deployment)  
 5. [Troubleshooting](#troubleshooting)  
@@ -22,36 +24,26 @@ A bidding platform for BITS students built with a Spring Boot backend and React 
 ## Tech Stack & Versions
 
 - **Backend**  
-  - Java 17 (LTS)  
-  - Spring Boot 3.x  
-  - Maven 3.8+  
+  - Java 21  
+  - Spring Boot 3.1.5  
+  - Maven 3.8+ (via wrapper or system install)  
 - **Frontend**  
   - Node.js 18+ / npm 9+  
   - React 18.x  
   - Create-React-App (with React Router v6)  
 - **Database**  
-  - MySQL 8 / MariaDB 10.6+ (or any JDBC-compatible)  
+  - MongoDB (or any other JDBC-/URI-compatible DB)  
 
 ---
 
 ## Prerequisites
 
-1. **Java 17**:  
-   ```bash
-   java -version
-   # should be “openjdk version "17.x"”  
-
-2. **Maven 3.8+**:
-
-   ```bash
-   mvn -v
-   ```
-3. **Node.js 18+ & npm 9+**:
-
-   ```bash
-   node -v && npm -v
-   ```
-4. **MySQL 8** up and running (or another JDBC-compatible DB).
+1. **Java 21** installed and on your `PATH`  
+2. **Maven 3.8+** (or just use the included Maven Wrapper)  
+3. **Node.js 18+ & npm 9+**  
+4. **MongoDB** up and running (or another supported DB)  
+5. **Spring Tool Suite 4** (for STS instructions)  
+6. **Lombok plugin** installed in your IDE (see STS notes below)
 
 ---
 
@@ -63,28 +55,21 @@ A bidding platform for BITS students built with a Spring Boot backend and React 
 git clone https://github.com/Krish080403/BITSBids.git
 cd BITSBids
 ```
-
 ### 2. Configure credentials
 
 #### Backend
-
-Copy and edit the properties template:
 
 ```bash
 cd Backend/src/main/resources
 cp application.properties.example application.properties
 ```
 
-Then open `application.properties` and set your DB and JWT/secret keys:
+Edit `application.properties` to set your DB connection and JWT secret:
 
 ```properties
-# JDBC URL to your local DB
-spring.datasource.url=jdbc:mysql://localhost:3306/bitsbids
-spring.datasource.username=YOUR_DB_USER
-spring.datasource.password=YOUR_DB_PASSWORD
-
-# JPA / Hibernate
-spring.jpa.hibernate.ddl-auto=update
+# MongoDB URI (or replace with your JDBC URL)
+spring.data.mongodb.uri=mongodb://localhost:27017/bitsbids
+# (if using SQL) spring.datasource.url, username, password, etc.
 
 # (Optional) JWT secret for auth
 app.jwtSecret=ChangeThisToAStrongRandomString
@@ -92,35 +77,59 @@ app.jwtSecret=ChangeThisToAStrongRandomString
 
 #### Frontend
 
-In the `Frontend/` folder, create a `.env`:
-
 ```bash
 cd ../../Frontend
 cp .env.example .env
 ```
 
-Set the API base URL and any keys:
+Edit `.env`:
 
 ```env
 REACT_APP_API_BASE_URL=http://localhost:8080/api
 ```
 
+---
+
 ### 3. Run the Backend
 
-From the `Backend/` folder:
+#### 3a. Using Maven Wrapper or Maven CLI
+
+In **PowerShell** or **CMD**:
 
 ```bash
+cd Backend
+# with wrapper:
+mvnw.cmd clean spring-boot:run
+# or, if you have Maven installed:
 mvn clean spring-boot:run
 ```
 
-If you prefer a runnable JAR:
+By default it starts on **port 8080**.
 
-```bash
-mvn clean package
-java -jar target/backend-0.0.1-SNAPSHOT.jar
-```
+#### 3b. Using Spring Tool Suite (STS)
 
-By default the app will start on **port 8080**.
+1. **Import as Maven Project**
+
+   * Open STS → **File → Import… → Existing Maven Projects**
+   * Browse to `BITSBids/Backend` and click **Finish**.
+
+2. **Install & Enable Lombok**
+
+   * In STS, go to **Help → Eclipse Marketplace…**, search for **Lombok**, and install **Lombok Annotations Support**.
+   * After restart, right-click the project → **Properties → Java Compiler → Annotation Processing**, and ensure **"Enable annotation processing"** is checked.
+
+3. **Set Java 21**
+
+   * Right-click the imported project → **Properties → Java Build Path → Libraries**
+   * Ensure the **JRE System Library** points to your **Java 21** installation.
+   * If not, click **Add Library → JRE System Library → Installed JREs**, add your JDK 21, and select it.
+
+4. **Run**
+
+   * Right-click the project → **Run As → Spring Boot App**
+   * Or open `BiddingAppApplication.java` and click the green ▶️ beside the `main` method.
+
+---
 
 ### 4. Run the Frontend
 
@@ -130,28 +139,37 @@ npm install
 npm start
 ```
 
-The React app should open at **[http://localhost:3000](http://localhost:3000)** and proxy API calls to your backend.
+Visit **[http://localhost:3000](http://localhost:3000)**; API calls proxy to the backend on port 8080.
 
 ---
 
 ## Packaging & Deployment
 
-* **Backend**:
+* **Backend**
 
-  * Build with `mvn clean package` → deployment JAR in `Backend/target/`
-* **Frontend**:
+  ```bash
+  cd Backend
+  mvn clean package
+  # deploy the JAR in target/
+  ```
+* **Frontend**
 
-  * Build for production:
-
-    ```bash
-    npm run build
-    ```
-  * Deploy the `build/` folder on any static-hosting (Netlify, S3, etc.) or serve via your Java backend.
+  ```bash
+  cd Frontend
+  npm run build
+  # serve build/ on Netlify, S3, or via Spring Boot
+  ```
 
 ---
 
 ## Troubleshooting
 
+* **Java version**
+
+  * Verify with `java -version` → should report **21**
+* **Maven errors**
+
+  * Use `mvnw.cmd` if `mvn` isn’t on PATH
 * **Port conflicts**
 
   * Change Spring Boot port in `application.properties`:
@@ -162,14 +180,14 @@ The React app should open at **[http://localhost:3000](http://localhost:3000)** 
   * Change React port:
 
     ```bash
-    SKIP_PREFLIGHT_CHECK=true PORT=3001 npm start
+    PORT=3001 npm start
     ```
-* **DB connection errors**
+* **DB connection**
 
-  * Verify JDBC URL, credentials, and that MySQL is listening on `localhost:3306`.
-* **CORS issues**
+  * Ensure MongoDB (or your DB) is running and the URI/credentials are correct.
+* **Lombok issues**
 
-  * Ensure backend has CORS enabled for `http://localhost:3000`.
+  * Confirm the IDE plugin is installed and annotation processing is enabled.
 
 ---
 
@@ -179,3 +197,9 @@ For any questions or issues, reach out to **Krish Mantri** at `krish.mantri@exam
 
 ```
 ```
+
+
+
+
+
+
