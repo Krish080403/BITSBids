@@ -12,8 +12,7 @@ A bidding platform for BITS students built with a Spring Boot backend and React 
    - [1. Clone the repo](#1-clone-the-repo)  
    - [2. Configure credentials](#2-configure-credentials)  
    - [3. Run the Backend](#3-run-the-backend)  
-     - [3a. Using Maven Wrapper or Maven CLI](#3a-using-maven-wrapper-or-maven-cli)  
-     - [3b. Using Spring Tool Suite (STS)](#3b-using-spring-tool-suite-sts)  
+     - [Using Spring Tool Suite (STS)](#3b-using-spring-tool-suite-sts)  
    - [4. Run the Frontend](#4-run-the-frontend)  
 4. [Packaging & Deployment](#packaging--deployment)  
 5. [Troubleshooting](#troubleshooting)  
@@ -69,8 +68,6 @@ Edit `application.properties` to set your DB connection and JWT secret:
 ```properties
 # MongoDB URI (or replace with your JDBC URL)
 spring.data.mongodb.uri=mongodb://localhost:27017/bitsbids
-# (if using SQL) spring.datasource.url, username, password, etc.
-
 # (Optional) JWT secret for auth
 app.jwtSecret=ChangeThisToAStrongRandomString
 ```
