@@ -24,22 +24,19 @@ This is the Spring Boot backend for BITSBids, providing RESTful APIs, authentica
    ```bash
    cd Backend/src/main/resources
    cp application.properties.example application.properties
-````
+   
+2. In application.properties, set:
+# MongoDB URI
+spring.data.mongodb.uri=mongodb://localhost:27017/bitsbids
 
-2. In `application.properties`, set:
-
-   ```properties
-   # MongoDB URI
-   spring.data.mongodb.uri=mongodb://localhost:27017/bitsbids
-
-   # JWT secret (choose a strong random string)
-   app.jwtSecret=ChangeThisToAStrongRandomString
+# JWT secret (choose a strong random string)
+app.jwtSecret=ChangeThisToAStrongRandomString
    ```
 
-## Running the Backend
+# Running the Backend
 ```
 
-### Using Spring Tool Suite (STS)
+## Using Spring Tool Suite (STS)
 
 1. **Import** → Existing Maven Project → select `BITSBids/Backend`.
 2. Ensure Lombok is installed and annotation processing is enabled.
@@ -48,7 +45,7 @@ This is the Spring Boot backend for BITSBids, providing RESTful APIs, authentica
 
 The API will listen on `http://localhost:8080/api`.
 
-## Packaging
+# Packaging
 
 ```bash
 cd Backend
@@ -56,7 +53,7 @@ cd Backend
 # JAR will be in target/; deploy as needed
 ```
 
-## Troubleshooting
+# Troubleshooting
 
 * **Java version mismatch:**
   Verify `java -version` outputs “21”.
