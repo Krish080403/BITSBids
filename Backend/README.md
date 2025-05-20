@@ -67,4 +67,3 @@ cd Backend
   Ensure MongoDB is running and your URI is correct.
 
 ```
-```

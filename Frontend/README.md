@@ -1,5 +1,4 @@
-````markdown
-# BITSBids – Frontend
+## BITSBids – Frontend
 
 This React application is the user-facing interface for BITSBids.
 
@@ -34,7 +33,7 @@ This React application is the user-facing interface for BITSBids.
    REACT_APP_API_BASE_URL=http://localhost:8080/api
    ```
 
-### Google OAuth 2.0 Setup
+## Google OAuth 2.0 Setup
 
 1. In Google Cloud Console, create an OAuth 2.0 Client ID.
 2. In `src/index.js`, locate the Google OAuth initialization and replace with your credentials:
@@ -80,5 +79,4 @@ npm run build
 * **Failed OAuth login:**
   Ensure your Google OAuth Client ID matches and your redirect URIs include `http://localhost:3000`.
 
-```
 ```
