@@ -19,7 +19,6 @@ This React application is the user-facing interface for BITSBids.
    ```bash
    cd Frontend
    npm install
-````
 
 2. **Create your environment file**
 
@@ -38,7 +37,7 @@ This React application is the user-facing interface for BITSBids.
 1. In Google Cloud Console, create an OAuth 2.0 Client ID.
 2. In `src/index.js`, locate the Google OAuth initialization and replace with your credentials:
 
-   ```js
+   ```
    import React from 'react';
    import ReactDOM from 'react-dom/client';
    import { GoogleOAuthProvider } from '@react-oauth/google';
