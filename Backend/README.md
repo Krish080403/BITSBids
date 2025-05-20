@@ -33,7 +33,7 @@ spring.data.mongodb.uri=mongodb://localhost:27017/bitsbids
 app.jwtSecret=ChangeThisToAStrongRandomString
    ```
 
-# Running the Backend
+## Running the Backend
 
 ## Using Spring Tool Suite (STS)
 
