@@ -31,7 +31,6 @@ spring.data.mongodb.uri=mongodb://localhost:27017/bitsbids
 
  JWT secret (choose a strong random string)
 app.jwtSecret=ChangeThisToAStrongRandomString
-   ```
 
 ## Running the Backend
 
