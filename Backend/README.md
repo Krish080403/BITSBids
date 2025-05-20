@@ -26,10 +26,10 @@ This is the Spring Boot backend for BITSBids, providing RESTful APIs, authentica
    cp application.properties.example application.properties
    
 2. In application.properties, set:
-# MongoDB URI
+ MongoDB URI
 spring.data.mongodb.uri=mongodb://localhost:27017/bitsbids
 
-# JWT secret (choose a strong random string)
+ JWT secret (choose a strong random string)
 app.jwtSecret=ChangeThisToAStrongRandomString
    ```
 
