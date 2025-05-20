@@ -34,7 +34,6 @@ app.jwtSecret=ChangeThisToAStrongRandomString
    ```
 
 # Running the Backend
-```
 
 ## Using Spring Tool Suite (STS)
 
