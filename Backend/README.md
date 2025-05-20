@@ -1,5 +1,4 @@
-````markdown
-# BITSBids – Backend
+## BITSBids – Backend
 
 This is the Spring Boot backend for BITSBids, providing RESTful APIs, authentication, and data persistence.
 
